@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
+import {SectionServiceClient} from '../services/section.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +11,13 @@ import {UserServiceClient} from '../services/user.service.client';
 export class ProfileComponent implements OnInit {
 
   constructor(private service: UserServiceClient,
+              private sectionService: SectionServiceClient,
               private router: Router) { }
 
   user = {};
   username;
   password;
+  sections = [];
 
   update(user) {
     console.log(user);
@@ -33,6 +36,10 @@ export class ProfileComponent implements OnInit {
       .profile()
       .then(user =>
         this.username = user.username);
+
+    this.sectionService
+      .findSectionsForStudent()
+      .then(sections => this.sections = sections );
   }
 
 }
