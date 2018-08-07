@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   password2;
 
   register(username, password, password2) {
+    if (username && password) {
     this.service.findUserByUsername(username)
       .then((user) => {
         if (!user) {
@@ -32,6 +33,9 @@ export class RegisterComponent implements OnInit {
           alert('Username already exists, pick another!');
         }
       });
+    } else {
+      alert('Username or passwords cannot be blank');
+    }
   }
 
 
