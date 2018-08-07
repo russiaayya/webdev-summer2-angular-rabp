@@ -17,11 +17,23 @@ export class RegisterComponent implements OnInit {
   password2;
 
   register(username, password, password2) {
-    this.service
-      .createUser(username, password)
-      .then(() =>
-        this.router.navigate(['profile']));
+    this.service.findUserByUsername(username)
+      .then((user) => {
+        if (!user) {
+          if (password === password2) {
+            this.service
+              .createUser(username, password)
+              .then(() =>
+                this.router.navigate(['profile']));
+          } else {
+            alert('Passwords do not match!');
+          }
+        } else {
+          alert('Username already exists, pick another!');
+        }
+      });
   }
+
 
   ngOnInit() {
   }
