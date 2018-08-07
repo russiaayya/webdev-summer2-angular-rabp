@@ -22,7 +22,7 @@ export class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }
-    });
+    }).then(response => response.json());
   }
 
   logout() {
@@ -49,6 +49,17 @@ export class UserServiceClient {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
+  update(user) {
+    return fetch('http://localhost:4000/api/user', {
+      body: JSON.stringify(user),
+      credentials: 'include', // include, same-origin, *omit
+      method: 'put',
       headers: {
         'content-type': 'application/json'
       }
