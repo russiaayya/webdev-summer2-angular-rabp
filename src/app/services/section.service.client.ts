@@ -1,3 +1,6 @@
+import {Injectable} from '@angular/core';
+
+@Injectable()
 export class SectionServiceClient {
 
   SECTION_URL = 'http://localhost:4000/api/course/COURSEID/section';
@@ -23,15 +26,31 @@ export class SectionServiceClient {
       .then(response => response.json());
   }
 
-  createSection(courseId, name, seats) {
-    const section = {courseId, name, seats};
-    return fetch(this.SECTION_URL.replace('COURSEID', courseId), {
+  // createSection(courseId, name, seats) {
+  //   const section = {courseId, name, seats};
+  //   return fetch(this.SECTION_URL.replace('COURSEID', courseId), {
+  //     method: 'post',
+  //     body: JSON.stringify(section),
+  //     credentials: 'include',
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     }
+  //   });
+  // }
+  createSection(section) {
+    return fetch(this.SECTION_URL.replace('COURSEID', section.courseId), {
       method: 'post',
       body: JSON.stringify(section),
       credentials: 'include',
       headers: {
         'content-type': 'application/json'
       }
+    });
+  }
+  deleteSection(sectionId) {
+    console.log('delete: ' + sectionId);
+    return fetch('http://localhost:4000/api/section/' + sectionId, {
+      method: 'delete'
     });
   }
 }

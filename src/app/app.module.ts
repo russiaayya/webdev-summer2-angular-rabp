@@ -22,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SectionListComponent } from './section-list/section-list.component';
 import {SectionServiceClient} from './services/section.service.client';
+import { SectionsComponent } from './sections/sections.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {SectionServiceClient} from './services/section.service.client';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    SectionListComponent
+    SectionListComponent,
+    SectionsComponent
   ],
   imports: [
     BrowserModule,

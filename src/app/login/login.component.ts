@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
           }
         });
     } else {
-      alert('Username or passwords cannot be blank');
+      alert('Please enter username and password');
   }
 }
 

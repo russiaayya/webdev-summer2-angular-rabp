@@ -27,14 +27,24 @@ export class SectionListComponent implements OnInit {
       .then(sections => this.sections = sections);
   }
 
-  createSection(sectionName, seats) {
-    this
-      .service
-      .createSection(this.courseId, sectionName, seats)
-      .then(() => {
-        this.loadSections(this.courseId);
-      });
-  }
+  // createSection(sectionName, seats) {
+  //   this
+  //     .service
+  //     .createSection(this.courseId, sectionName, seats)
+  //     .then(() => {
+  //       this.loadSections(this.courseId);
+  //     });
+  // }
+
+  // createSection(sectionName, seats) {
+  //   const section = {this.courseId, sectionName, seats};
+  //   this
+  //     .service
+  //     .createSection(section)
+  //     .then(() => {
+  //       this.loadSections(this.courseId);
+  //     });
+  // }
 
   enroll(section) {
     // alert(section._id);
