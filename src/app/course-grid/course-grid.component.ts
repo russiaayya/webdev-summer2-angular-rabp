@@ -21,23 +21,28 @@ export class CourseGridComponent implements OnInit {
   enrolledCourses: Course[] = [];
 
   findEnrolledCourses(sections) {
-    sections.forEach(section => {
+    sections.map(section => {
       this.service.findCourseById(section.section.courseId)
         .then(course => {
           this.enrolledCourses.push(course);
+          this.courses = this.courses.filter(c => c.id !== course.id);
+          // console.log(this.courses);
         });
     });
   }
 
   ngOnInit() {
     this.service.findAllCourses()
-      .then(courses => this.courses = courses);
-    this.userService.profile()
-      .then(user => {
-        this.user = user;
-      if (this.user.username) {
-          this.sectionService.findSectionsForStudent()
-            .then(sections => {this.findEnrolledCourses(sections); });
-  }
-
+      .then(courses => this.courses = courses)
+      .then(() => {
+        this.userService.profile()
+          .then(user => {
+            this.user = user;
+            if (this.user.username) {
+              this.sectionService.findSectionsForStudent()
+                .then(sections => this.findEnrolledCourses(sections));
+            }
+          });
+      });
+     }
 }

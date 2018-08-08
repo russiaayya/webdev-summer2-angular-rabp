@@ -29,6 +29,7 @@ export class SectionsComponent implements OnInit {
 
   selectCourse = course => {
     this.courseId = course.id;
+    this.sectionName = course.title + ' Section 1';
     this.selectedCourse = course;
     this.sectionService
       .findSectionsForCourse(course.id)
