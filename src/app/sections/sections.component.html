@@ -20,16 +20,24 @@
         Sections
       </li>
       <li class="list-group-item">
-        <input [(ngModel)]="section.name"
+        <input [(ngModel)]="sectionName"
                placeholder="Section name"
                class="form-control">
-        <input [(ngModel)]="section.maxSeats"
+        <input [(ngModel)]="maxSeats"
                placeholder="Maximum seats"
                class="form-control">
       </li>
+      <table class="table">
+      <thead>
+      <tr>
+      <th>
       <button (click)="addSection(section)"
-              class="btn btn-success btn-sm float-right">Add
-      </button>
+              class="btn btn-primary btn-block float-right">Add
+      </button></th>
+      <th>
+      <button (click)="updateSection(sectionName, maxSeats)"
+              class="btn btn-primary btn-block float-right">Update
+      </button></th></tr></thead></table>
       <table class="table">
         <thead>
         <tr>
@@ -45,8 +53,8 @@
           <td>{{section.maxSeats}}</td>
           <td>{{section.seats}}</td>
           <td>
-            <button
-                    class="btn btn-primary btn-sm float-right">Update
+            <button (click)="editSection(section)"
+                    class="btn btn-warning btn-sm float-right">Edit
             </button>
           </td>
           <td>

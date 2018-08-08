@@ -16,6 +16,9 @@ export class SectionsComponent implements OnInit {
   }
   section = {}
   courseId = ''
+  sectionName = '';
+  maxSeats = '';
+  selectedSectionId = '';
 
   constructor(private sectionService: SectionServiceClient,
               private courseService: CourseServiceClient) { }
@@ -33,7 +36,9 @@ export class SectionsComponent implements OnInit {
       alert('Please select a course to add sections');
     } else {
       section.courseId = this.selectedCourse.id;
-      section.seats = section.maxSeats;
+      section.name = this.sectionName;
+      section.maxSeats = this.maxSeats;
+      section.seats = this.maxSeats;
       this.sectionService
         .createSection(section)
         .then(() => {
@@ -51,6 +56,23 @@ export class SectionsComponent implements OnInit {
           .findSectionsForCourse(this.courseId)
           .then(sections => this.sections = sections);
       });
+  }
+  updateSection(name, maxSeats) {
+    this.sectionService
+      .updateSection(this.selectedSectionId, name, maxSeats)
+      .then(() => {
+        this.sectionService
+          .findSectionsForCourse(this.courseId)
+          .then(sections => this.sections = sections);
+      });
+    this.sectionName = '';
+    this.maxSeats = '';
+    this.selectedSectionId = '';
+  }
+  editSection(section) {
+    this.sectionName = section.name;
+    this.maxSeats = section.maxSeats;
+    this.selectedSectionId = section._id;
   }
 
   ngOnInit() {
