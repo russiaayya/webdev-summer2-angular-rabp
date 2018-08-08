@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseServiceClient} from '../services/course.service.client';
 import {SectionServiceClient} from '../services/section.service.client';
+import {UserServiceClient} from '../services/user.service.client';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sections',
@@ -21,7 +23,9 @@ export class SectionsComponent implements OnInit {
   selectedSectionId = '';
 
   constructor(private sectionService: SectionServiceClient,
-              private courseService: CourseServiceClient) { }
+              private courseService: CourseServiceClient,
+              private  userService: UserServiceClient,
+              private router: Router) { }
 
   selectCourse = course => {
     this.courseId = course.id;
@@ -73,6 +77,14 @@ export class SectionsComponent implements OnInit {
     this.sectionName = section.name;
     this.maxSeats = section.maxSeats;
     this.selectedSectionId = section._id;
+  }
+
+  logout() {
+    this.userService
+      .logout()
+      .then(() =>
+        this.router.navigate(['login']));
+
   }
 
   ngOnInit() {

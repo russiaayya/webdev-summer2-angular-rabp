@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   phone;
   email;
   address;
+  role;
   sections = [];
 
   update() {
@@ -47,6 +48,13 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['login']));
 
   }
+  disenroll(section) {
+    this.sectionService.disenrollStudentInSection(section._id)
+      .then(() => {
+        this.sectionService.findSectionsForStudent()
+          .then(sections => this.sections = sections);
+      });
+  }
 
   ngOnInit() {
     this.service
@@ -59,6 +67,7 @@ export class ProfileComponent implements OnInit {
         this.phone = user.phone;
         this.email = user.email;
         this.address = user.address;
+        this.role = user.role;
       });
 
     this.sectionService

@@ -1,16 +1,29 @@
-<h2>Course Grid ({{courses.length}})</h2>
-
+<div *ngIf="user.username">
+  <h3>Enrolled Courses</h3>
+  <div class="row">
+    <div *ngFor="let course of enrolledCourses" class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{course.title}}</h5>
+          <a routerLink="/course/{{course.id}}"
+             class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3>All Courses</h3>
 <div class="row">
   <div *ngFor="let course of courses" class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{course.title}}</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a routerLink="/course/{{course.id}}"
-           class="btn btn-primary">View</a>
-        <a routerLink="/course/{{course.id}}/section"
-           class="btn btn-primary">Enroll</a>
-      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{course.title}}</h5>
+          <a routerLink="/course/{{course.id}}"
+             class="btn btn-primary">View</a>
+          <a routerLink="/course/{{course.id}}/section"
+             *ngIf="user.username"
+             class="btn btn-primary wbdv-left">Enroll</a>
+        </div>
     </div>
   </div>
 </div>

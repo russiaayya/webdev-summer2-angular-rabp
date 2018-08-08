@@ -1,7 +1,18 @@
 <div class="container-fluid">
   <h1>Welcome to Whiteboard</h1>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
+  <div *ngIf="!user.username">
+    <a routerLink="/login">Login</a> |
+    <a routerLink="/register">Register</a>
+  </div>
+  <div *ngIf="user.username">
+    <a (click)="logout()">Logout</a> |
+    <a routerLink="/profile">Profile</a> | 
+    <a *ngIf="user.role === 'ADMIN' || user.username === 'admin'"
+       routerLink="/sections">Admin</a>
+  </div>
+  <!--<div *ngIf="user.role === 'ADMIN' || user.username === 'admin'">-->
+    <!--<a routerLink="/sections">Admin</a>-->
+  <!--</div>-->
   <app-course-grid></app-course-grid>
 
   <!--<div class="row">-->

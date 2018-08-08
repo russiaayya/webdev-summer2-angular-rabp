@@ -1,6 +1,9 @@
 <div class="container-fluid">
   <h1>Profile</h1>
-
+  <a (click)="logout()">Logout</a> |
+  <a routerLink="/home">Home</a> |
+  <a *ngIf="role === 'ADMIN' || username === 'admin'"
+     routerLink="/sections">Admin</a>
   <input [(ngModel)]="username"
          placeholder="username"
          class="form-control"/>
@@ -26,14 +29,23 @@
 
   <h2>Sections ({{sections.length}})</h2>
 
-  <ul class="list-group">
-    <li *ngFor="let enrollment of sections" class="list-group-item">
-      {{enrollment.section.name}}
-      ({{enrollment.section.seats}})
-    </li>
-  </ul>
-
-  <a (click)="logout()">Logout</a>
-  <a routerLink="/home">Home</a>
-
+  <div class="row">
+    <div *ngFor="let enrollment of sections" class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{enrollment.section.name}}</h5>
+          <p> Grade: Nil</p>
+          <button (click)="disenroll(enrollment.section)"
+                  class = "btn btn-danger">Disenroll
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<ul class="list-group">-->
+    <!--<li *ngFor="let enrollment of sections" class="list-group-item">-->
+      <!--{{enrollment.section.name}}-->
+      <!--({{enrollment.section.seats}})-->
+    <!--</li>-->
+  <!--</ul>-->
 </div>
