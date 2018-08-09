@@ -1,5 +1,5 @@
 export class UserServiceClient {
-  URL = 'http://webdev-summer2-server-node-ra.herokuapp.com';
+  URL = 'https://webdev-summer2-server-node-ra.herokuapp.com';
   // URL = 'http://localhost:4000';
 
   findUserById(userId) {
