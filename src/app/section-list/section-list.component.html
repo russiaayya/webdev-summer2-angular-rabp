@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1>Sections for course: {{courseId}}</h1>
+  <h1>Sections for {{courseTitle}}</h1>
   <a routerLink="/home">Home</a> |
   <a routerLink="/profile">Profile</a> |
   <a (click)="logout()">Logout</a>
@@ -14,7 +14,7 @@
     <!--Add Section-->
   <!--</button>-->
 
-  <ul class="list-group">
+  <ul class="list-group wbdv-margin-top">
     <li *ngFor="let section of sections" class="list-group-item">
       <h5>{{section.name}}</h5>
       <button (click)="enroll(section)"

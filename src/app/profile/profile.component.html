@@ -4,23 +4,36 @@
   <a routerLink="/home">Home</a> |
   <a *ngIf="role === 'ADMIN' || username === 'admin'"
      routerLink="/sections">Admin</a>
+  <div class="wbdv-margin-top">
+    <label for="username">Username</label>
   <input [(ngModel)]="username"
          placeholder="username"
-         class="form-control"/>
+         class="form-control"
+         id="username"/>
+    <label for="firstName">First Name</label>
   <input [(ngModel)]="firstName"
          placeholder="First Name"
-         class="form-control"/>
-  <input [(ngModel)]="lastName"
+         class="form-control"
+         id="firstName"/>
+    <label for="lastName">Last Name</label>
+    <input [(ngModel)]="lastName"
          placeholder="Last Name"
+         id="lastName"
          class="form-control"/>
-  <input [(ngModel)]="phone"
-         placeholder="Phone number"
+    <label for="phone">Phone Number</label>
+    <input [(ngModel)]="phone"
+         placeholder="9876543210"
+         id="phone"
          class="form-control"/>
-  <input [(ngModel)]="email"
-         placeholder="Email"
+    <label for="email">Email</label>
+    <input [(ngModel)]="email"
+         placeholder="name@mail.com"
+         id="email"
          class="form-control"/>
-  <input [(ngModel)]="address"
+    <label for="address">Address</label>
+    <input [(ngModel)]="address"
          placeholder="Address"
+         id="address"
          class="form-control"/>
   <button (click)="update()"
           class="btn btn-primary btn-block">
@@ -48,4 +61,5 @@
       <!--({{enrollment.section.seats}})-->
     <!--</li>-->
   <!--</ul>-->
+</div>
 </div>

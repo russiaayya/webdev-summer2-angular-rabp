@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <h2>Sections</h2>
 <a routerLink="../home">Home</a> |
 <a routerLink="../profile">Profile</a> |
@@ -15,9 +16,9 @@
         {{course.title}} ({{course.id}})
       </li>
     </ul>
-    {{selectedCourse.title}}
   </div>
-  <div class="col-8">
+  <div class="col-8"
+       *ngIf="selectedCourse.id !== -1">
     <ul class="list-group">
       <li class="list-group-item active">
         Sections
@@ -47,7 +48,8 @@
           <th>Name</th>
           <th>Maximum Seats</th>
           <th>Remaining Seats</th>
-          <th></th>
+          <th> </th>
+          <th> </th>
         </tr>
         </thead>
         <tbody>
@@ -74,4 +76,5 @@
       <!--</li>-->
     </ul>
   </div>
+</div>
 </div>
