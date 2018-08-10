@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <h2>{{course.title}}</h2>
   <a routerLink="/home">Home</a> |
-  <a *ngIf="user.username" routerLink="/profile">Profile</a> |
-  <a *ngIf="user.username" (click)="logout()">Logout</a>
+  <span *ngIf="user.username">
+    <a routerLink="/profile">Profile</a> |
+    <a (click)="logout()">Logout</a>
+  </span>
   <app-module-list></app-module-list>
 </div>
