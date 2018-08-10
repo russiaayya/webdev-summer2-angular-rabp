@@ -66,6 +66,10 @@ export class SectionsComponent implements OnInit {
       });
   }
   updateSection(name, maxSeats) {
+    const minSeats = this.selectedSection.maxSeats - this.selectedSection.seats;
+    if (maxSeats < minSeats) {
+      alert('Max seats cannot be less than ' + minSeats);
+    } else {
     const seats = maxSeats - this.selectedSection.maxSeats + this.selectedSection.seats;
     this.sectionService
       .updateSection(this.selectedSection._id, name, maxSeats, seats)
@@ -78,6 +82,7 @@ export class SectionsComponent implements OnInit {
     this.maxSeats = '';
     // this.selectedSectionId = '';
     this.selectedSection = new Section();
+    }
   }
   editSection(section) {
     this.sectionName = section.name;
