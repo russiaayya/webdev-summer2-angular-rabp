@@ -59,8 +59,8 @@ export class SectionServiceClient {
     });
   }
 
-  updateSection(sectionId, name, maxSeats) {
-    const section = {_id: sectionId, name: name, maxSeats: maxSeats};
+  updateSection(sectionId, name, maxSeats, seats) {
+    const section = {_id: sectionId, name: name, maxSeats: maxSeats, seats: seats};
     return fetch(this.URL + '/api/section/' + sectionId, {
       method: 'put',
       body: JSON.stringify(section),

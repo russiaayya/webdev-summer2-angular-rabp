@@ -12,13 +12,13 @@ import {Section} from '../models/section.model.client';
 })
 export class SectionsComponent implements OnInit {
 
-  courses = []
-  sections = []
+  courses = [];
+  sections = [];
   selectedCourse = {
     id: -1
-  }
-  section = {}
-  courseId = ''
+  };
+  section = {};
+  courseId = '';
   sectionName = '';
   maxSeats = '';
   selectedSectionId = '';
@@ -66,9 +66,9 @@ export class SectionsComponent implements OnInit {
       });
   }
   updateSection(name, maxSeats) {
-    // const seats = maxSeats - this.
+    const seats = maxSeats - this.selectedSection.maxSeats + this.selectedSection.seats;
     this.sectionService
-      .updateSection(this.selectedSection._id, name, maxSeats)
+      .updateSection(this.selectedSection._id, name, maxSeats, seats)
       .then(() => {
         this.sectionService
           .findSectionsForCourse(this.courseId)
