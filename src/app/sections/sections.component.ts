@@ -3,6 +3,7 @@ import {CourseServiceClient} from '../services/course.service.client';
 import {SectionServiceClient} from '../services/section.service.client';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
+import {Section} from '../models/section.model.client';
 
 @Component({
   selector: 'app-sections',
@@ -21,6 +22,8 @@ export class SectionsComponent implements OnInit {
   sectionName = '';
   maxSeats = '';
   selectedSectionId = '';
+  // selectedSection: Section;
+  selectedSection: {};
 
   constructor(private sectionService: SectionServiceClient,
               private courseService: CourseServiceClient,
@@ -63,8 +66,9 @@ export class SectionsComponent implements OnInit {
       });
   }
   updateSection(name, maxSeats) {
+    // const seats = maxSeats - this.
     this.sectionService
-      .updateSection(this.selectedSectionId, name, maxSeats)
+      .updateSection(this.selectedSection._id, name, maxSeats)
       .then(() => {
         this.sectionService
           .findSectionsForCourse(this.courseId)
@@ -72,12 +76,14 @@ export class SectionsComponent implements OnInit {
       });
     this.sectionName = '';
     this.maxSeats = '';
-    this.selectedSectionId = '';
+    // this.selectedSectionId = '';
+    this.selectedSection = {};
   }
   editSection(section) {
     this.sectionName = section.name;
     this.maxSeats = section.maxSeats;
-    this.selectedSectionId = section._id;
+    // this.selectedSectionId = section._id;
+    this.selectedSection = section;
   }
 
   logout() {
