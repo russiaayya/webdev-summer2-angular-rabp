@@ -22,8 +22,8 @@ export class SectionsComponent implements OnInit {
   sectionName = '';
   maxSeats = '';
   selectedSectionId = '';
-  // selectedSection: Section;
-  selectedSection: {};
+  selectedSection: Section;
+  // selectedSection: {};
 
   constructor(private sectionService: SectionServiceClient,
               private courseService: CourseServiceClient,
@@ -77,7 +77,7 @@ export class SectionsComponent implements OnInit {
     this.sectionName = '';
     this.maxSeats = '';
     // this.selectedSectionId = '';
-    this.selectedSection = {};
+    this.selectedSection = new Section();
   }
   editSection(section) {
     this.sectionName = section.name;
