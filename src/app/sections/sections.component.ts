@@ -15,7 +15,8 @@ export class SectionsComponent implements OnInit {
   courses = [];
   sections = [];
   selectedCourse = {
-    id: -1
+    id: -1,
+    title: ''
   };
   section = {};
   courseId = '';
@@ -43,8 +44,12 @@ export class SectionsComponent implements OnInit {
     if (this.selectedCourse.id === -1) {
       alert('Please select a course to add sections');
     } else {
+      if (this.sectionName === '') {
+        section.name = this.selectedCourse.title + ' Section 1';
+      } else {
+        section.name = this.sectionName;
+      }
       section.courseId = this.selectedCourse.id;
-      section.name = this.sectionName;
       section.maxSeats = this.maxSeats;
       section.seats = this.maxSeats;
       this.sectionService
@@ -54,6 +59,7 @@ export class SectionsComponent implements OnInit {
             .findSectionsForCourse(this.selectedCourse.id);
         })
         .then(sections => this.sections = sections);
+      this.maxSeats = '';
     }
   }
 
