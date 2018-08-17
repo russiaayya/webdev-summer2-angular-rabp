@@ -1,0 +1,19 @@
+<div class="container-fluid">
+<h1>Quizzes</h1>
+  <a routerLink="/home">Home</a>
+
+<ul class="list-group">
+  <li *ngFor="let quiz of quizzes"
+      class="list-group-item">
+    {{quiz.title}}
+    <a class="float-right btn btn-primary"
+       href="/quiz/{{quiz._id}}/submissions">
+      Submissions
+    </a>
+    <a class="float-right btn btn-success"
+       href="/quiz/{{quiz._id}}">
+      Take
+    </a>
+  </li>
+</ul>
+</div>

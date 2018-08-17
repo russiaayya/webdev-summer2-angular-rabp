@@ -6,6 +6,10 @@ import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {SectionListComponent} from './section-list/section-list.component';
 import {SectionsComponent} from './sections/sections.component';
+import {QuizListComponent} from './quiz-list/quiz-list.component';
+import {QuizTakerComponent} from './quiz-taker/quiz-taker.component';
+import {QuizSubmissionsComponent} from './quiz-submissions/quiz-submissions.component';
+import {AnswersComponent} from './answers/answers.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -14,6 +18,10 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'sections', component: SectionsComponent },
+  { path: 'quizzes', component: QuizListComponent },
+  { path: 'quiz/:quizId', component: QuizTakerComponent },
+  { path: 'quiz/:quizId/submissions', component: QuizSubmissionsComponent },
+  { path: 'quiz/:quizId/submissions/:submissionId', component: AnswersComponent },
   { path: 'course/:courseId', component: CourseViewerComponent},
   { path: 'course/:courseId/section', component: SectionListComponent},
   { path: 'course/:courseId/module/:moduleId', component: CourseViewerComponent},

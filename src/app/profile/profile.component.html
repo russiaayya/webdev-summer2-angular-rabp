@@ -2,6 +2,7 @@
   <h1>Profile</h1>
   <a (click)="logout()">Logout</a> |
   <a routerLink="/home">Home</a> |
+  <a routerLink="/quizzes">Quizzes</a> |
   <a *ngIf="role === 'ADMIN' || username === 'admin'"
      routerLink="/sections">Admin</a>
   <div class="wbdv-margin-top">

@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <h1>Answers</h1>
+  <a routerLink="/home">Home</a> |
+  <a routerLink="/quizzes">Quizzes</a>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of questionAnswerMap">
+      <h4>{{item.question.title}}</h4>
+      <h5>{{item.question.description}}</h5>
+      <br/>
+      <h6>Answer: {{item.answer}}</h6>
+    </li>
+  </ul>
+</div>

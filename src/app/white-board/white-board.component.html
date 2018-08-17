@@ -6,7 +6,8 @@
   </div>
   <div *ngIf="user.username">
     <a (click)="logout()">Logout</a> |
-    <a routerLink="/profile">Profile</a> | 
+    <a routerLink="/profile">Profile</a> |
+    <a routerLink="../quizzes">Quizzes</a> |
     <a *ngIf="user.role === 'ADMIN' || user.username === 'admin'"
        routerLink="/sections">Admin</a>
   </div>
