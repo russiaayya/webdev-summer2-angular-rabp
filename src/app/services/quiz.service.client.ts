@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class QuizServiceClient {
-  QUIZ_URL = 'https://webdev-summer2-2018-rabp.herokuapp.com';
+  QUIZ_URL = 'https://webdev-summer2-server-node-ra.herokuapp.com';
   // QUIZ_URL = 'http://localhost:4000/';
   submitQuiz = quiz =>
     fetch(this.QUIZ_URL + '/api/quiz/' + quiz._id + '/submission', {
