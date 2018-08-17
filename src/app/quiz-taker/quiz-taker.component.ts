@@ -14,7 +14,10 @@ export class QuizTakerComponent implements OnInit {
               private router: Router) { }
 
   quizId = ''
-  quiz = {};
+  quiz = {
+    title: '',
+    questions: []
+  };
 
   submitQuiz = quiz =>
     this.quizService
